@@ -18,5 +18,12 @@ pipeline {
                 sh 'aws s3 cp target/*.war s3://warfileswebproject/bpl/bpl$BUILD_NUMBER.war'
             }
         }
+        stage('Build docker image') {
+            steps {
+                script {
+                    docker build -t 2222s/sonyimage:01
+                }
+            }
+        }
     }
 }
