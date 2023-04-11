@@ -21,7 +21,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                 script {
-                    docker build -t 2222s/sonyimage:01
+                    docker build -t 2222s/sonyimage
                 }
             }
         }
