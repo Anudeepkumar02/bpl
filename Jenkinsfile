@@ -20,10 +20,24 @@ pipeline {
         }
         stage('Build docker image') {
             steps {
-                script {
-                    docker build -t 2222s/fristimage .
+                script{
+                    sh 'docker build -t 2222s/sonyimages .'
                 }
             }
         }
+        stage('pushing docker image to docker hub') {
+            steps {
+                script{
+                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u 2222s -p ${dockerhubpwd}'        
+                        
+    
+}
+                    sh 'docker push 2222s/sonyimages:latest'
+                
+                }
+            }
+        }
+        
     }
 }
